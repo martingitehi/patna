@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar color="white">
+    <ion-title>
+      <b>{{profile?.fullname}}</b>
+      <!-- <b>mkbhd</b> -->
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only style="position:relative;">
+        <ion-icon name="notifications" color="dark">
+        </ion-icon>
+        <span id="notification-badge">{{images.length | number:'1.0-0'}}</span>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button block icon-only clear color="grey" (click)="signOut()">
+        <ion-icon name="ios-log-out" color="dark">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <!--user info block-->
+  <ion-item no-lines class="profile-tab">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <ion-avatar>
+            <img src="{{profile?.avatar_url}}" onerror="this.style.display='none'">
+            <!-- <img src="assets/imgs/me.jpg" style="position:relative;" onerror="this.style.display='none'"> -->
+            <!-- <span id="decorator-badge">
+              <ion-icon name="td-quill" color="white"></ion-icon>
+            </span> -->
+          </ion-avatar>
+        </ion-col>
+        <ion-col col-8>
+          <ion-row>
+            <ion-col col-4>
+              <b>{{images.length}}</b>
+              <br /> photos</ion-col>
+            <ion-col col-4>
+              <b>{{profile?.relationships.status}}</b>
+              <br /> status</ion-col>
+            <ion-col col-4>
+              <b>{{profile?.location}}</b>
+              <br />location</ion-col>
+          </ion-row>
+          <ion-row>
+            <button ion-button block outline small color="grey" (click)="message(profile)">Message</button>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+  <ion-item text-wrap no-lines *ngIf="profile">
+    <b>{{profile?.username}}</b>
+    <br />
+    {{profile?.contact.mobile}}
+    <br />{{profile?.about}}
+  </ion-item>
+
+  <!--photos grid here-->
+  <ion-grid>
+    <ion-row wrap>
+      <ion-col col-4 *ngFor="let image of images; let i=index">
+        <ion-thumbnail>
+          <img src="assets/imgs/me ({{image.name}}).jpg" onerror="this.style.display='none'">
+        </ion-thumbnail>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

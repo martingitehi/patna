@@ -1,17 +1,104 @@
-<ion-header>
-  <ion-navbar>
+<ion-header no-buser>
+  <ion-navbar color="white">
+    <!-- <ion-buttons start>
+      <button ion-button clear icon-only style="position:relative;">
+        <ion-icon name="notifications" color="dark">
+        </ion-icon>
+        <span id="notification-badge">{{users.length | number:'1.0-0'}}</span>
+      </button>
+    </ion-buttons> -->
     <ion-title>
-      Contact
+      <b>Chats</b>
     </ion-title>
+    <ion-buttons start>
+      <button ion-button clear icon-only (click)="toggle()">
+        <ion-icon name="refresh" color="dark">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button clear icon-only>
+        <ion-icon name="more" color="dark">
+        </ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <!-- <div class="stats">
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <button ion-button block small icon-left round outline color="grey" (click)="withdraw()">
+              <ion-icon name="people" color="bright"></ion-icon> All</button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button block small icon-left round outline color="grey" (click)="withdraw()">
+              <ion-icon name="flash" color="bright"></ion-icon>New</button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button block small icon-left round outline color="grey" (click)="withdraw()">
+              <ion-icon name="star" color="bright"></ion-icon>Popular</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div> -->
+
+  <div *ngIf="mode=='list'">
+    <ion-list>
+      <ion-item no-lines *ngFor="let user of users; let i=index" tappable (tap)="viewProfile(user)">
+        <ion-avatar item-left style="position:relative;">
+          <img src="{{user.avatar_url}}">
+          <!-- <span id="decorator-badge">
+            <ion-icon name="star" color="white"></ion-icon>
+          </span> -->
+        </ion-avatar>
+        <h3>
+          <b> {{user.fullname}}</b>
+        </h3>
+        <p>{{user.gender}} &middot; {{user.location}}</p>
+        <button item-right ion-button color="primary" (click)="viewProfile()"> View Profile
+        </button>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="mode=='grid'">
+    <ion-list *ngFor="let user of users; let i=index">
+      <ion-card style="box-shadow: 0px 0px 0px 0px; -webkit-box-shadow: 0px 0px 0px 0px;" (tap)="viewProfile(user)">
+        <ion-item no-lines>
+          <h3>
+            <b>{{user.username}}</b>
+          </h3>
+          <small>{{user?.location}}</small>
+          <button item-end ion-button round outline small icon-left color="grey">
+            Follow
+          </button>
+        </ion-item>
+        <img src="{{user.avatar_url}}">
+        <ion-row>
+          <ion-col col-4 center text-center>
+            <button ion-button block small clear icon-only icon-left color="grey">
+              <ion-icon large name="paper-plane">
+              </ion-icon> Share
+            </button>
+          </ion-col>
+          <ion-col col-4 center text-center>
+            <button ion-button block small clear icon-only icon-left color="grey">
+              <ion-icon large name="heart-outline">
+              </ion-icon> Like
+            </button>
+          </ion-col>
+          <ion-col col-4 center text-center>
+            <button ion-button block small clear icon-only icon-right color="grey">
+              <ion-icon large name="bookmark">
+              </ion-icon> Bookmark
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-list>
+  </div>
 </ion-content>

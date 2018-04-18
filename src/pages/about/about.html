@@ -1,11 +1,60 @@
-<ion-header>
-  <ion-navbar>
+<!-- <ion-header no-buser>
+  <ion-navbar color="white">
     <ion-title>
-      About
+      <b>Users</b>
     </ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only>
+        <ion-icon name="more" color="dark">
+        </ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding>
+<ion-content no-padding>
+  <ion-item tappable no-lines text-wrap (tap)="viewProfile(user)" *ngIf="profile">
+    <h1>
+      <b>Hey, {{profile.fullname.substr(0, profile.fullname.indexOf(' '))}}</b>
+    </h1>
+    <p>See the new faces</p>
+    <ion-avatar item-end class="img-ring" style="position:relative;">
+      <img src="{{profile.avatar_url}}">
+      <span id="notification-badge">3</span>
+    </ion-avatar>
+  </ion-item>
+  <br />
 
+  <div id="sliding-users">
+    <div style="height:100px; margin-left:4%;">
+      <ion-slides slidesPerView="5" spaceBetween="3">
+        <ion-slide *ngFor="let user of users; let i=index;" tappable (tap)="viewProfile(user)" style="position:relative;">
+          <ion-thumbnail style="position:relative; border:2px solid darkorange; border-radius:100%!important; height:60px!important; width:60px!important; padding:3%;">
+            <img src="{{user?.avatar_url}}" style="width:100%; border-radius:100%!important; height:55px; width:55px;" onerror="this.style.display='none'"
+            />
+          </ion-thumbnail>
+          <div style="position:absolute; bottom:-17px; background-color:transparent; color:black; font-size:x-small; max-width:60px; text-align:start; text-overflow:ellipsis!important;">{{user.username == null ? user.fullname : user.username}}</div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+
+  <br />
+
+  <div>
+    <ion-grid>
+      <ion-row wrap>
+        <ion-col col-4 *ngFor="let user of users; let i=index" tappable (tap)="viewProfile(user)">
+          <ion-thumbnail>
+            <div class="image">
+              <img src="{{user.avatar_url}}" onerror="this.style.display='none'">
+            </div>
+          </ion-thumbnail>
+          <span class="bottom-band">
+            {{user.fullname}}
+          </span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

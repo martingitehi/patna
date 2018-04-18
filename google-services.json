@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "50927489917",
+    "firebase_url": "https://boo-app-3e2f2.firebaseio.com",
+    "project_id": "boo-app-3e2f2",
+    "storage_bucket": "boo-app-3e2f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50927489917:android:ab662b1bab6b9444",
+        "android_client_info": {
+          "package_name": "com.appit.patna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50927489917-5pe30qvqk6oe8dk4hbe9iensvafjdmhh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ5CZB7RYtBZivPGgYANGBWbQF40K1j9U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,17 +1,61 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content no-padding>
+  <ion-item no-lines>
+    <h2>
+      <b>Martin Otieno Boris</b>
+    </h2>
+    <ion-select name="account" [selectOptions]="selectOptions" >
+      <ion-option *ngFor="let prod of products; let i=index" value="{{prod.price}}" [selected]="i==0">{{prod.product_name}}</ion-option>
+    </ion-select>
+    <small>{{today | date:'EEE d MMM, yyyy'}}</small>
+    <ion-avatar item-end style="position:relative;">
+      <img src="assets/imgs/me.jpg" style="overflow:hidden!important;display:block;">
+      <span id="notification-badge">{{notifications}}</span>
+    </ion-avatar>
+  </ion-item>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-item no-lines style="text-align:center;">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <h3>
+            <b>{{3847556 | number : '1.0-0'}}</b>
+          </h3>
+          <small>Gross Sales</small>
+        </ion-col>
+        <ion-col col-4>
+          <h3>
+            <b>{{104 | number : '1.0-0'}}</b>
+          </h3>
+          <small>Orders</small>
+        </ion-col>
+        <ion-col col-4>
+          <h3>
+            <b>{{1012450 | number : '1.0-0'}}</b>
+          </h3>
+          <small>Gross Profits</small>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+  <canvas #barCanvas></canvas>
+
+  <ion-list>
+    <ion-list-header>
+      Recent Sales
+    </ion-list-header>
+    <ion-item id="item" no-lines detail-push text-wrap *ngFor="let product of products; let i=index">
+      <ion-icon name="ios-pricetags" color="deepblue" item-left></ion-icon>
+      <h3 style="text-transform:capitalize !important;">
+        <b>
+          {{product.product_name}}
+          <span style="color:grey;"> x {{i+1}}</span>
+        </b>
+      </h3>
+      <small>{{today | date:'d MMM, hh:mma'}} &middot; MPESA</small>
+      <small item-right>
+        <span style="color:grey;">{{product.price | currency}}</span>
+      </small>
+    </ion-item>
+  </ion-list>
 </ion-content>

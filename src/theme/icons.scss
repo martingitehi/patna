@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../assets/fonts/icomoon.eot?ps0eco');
+  src:  url('../assets/fonts/icomoon.eot?ps0eco#iefix') format('embedded-opentype'),
+    url('../assets/fonts/icomoon.ttf?ps0eco') format('truetype'),
+    url('../assets/fonts/icomoon.woff?ps0eco') format('woff'),
+    url('../assets/fonts/icomoon.svg?ps0eco#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-td-home:before {
+  content: "\e902";
+}
+.icon-td-quill:before {
+  content: "\e907";
+}
+.icon-td-images:before {
+  content: "\e90e";
+}
+.icon-td-camera:before {
+  content: "\e90f";
+}
+.icon-td-price-tags:before {
+  content: "\e936";
+}
+.icon-td-cart:before {
+  content: "\e93a";
+}
+.icon-td-user:before {
+  content: "\e971";
+}
+.icon-td-search:before {
+  content: "\e986";
+}
+.icon-td-cog:before {
+  content: "\e994";
+}
+.icon-td-cross:before {
+  content: "\ea0f";
+}
+.icon-td-checkmark:before {
+  content: "\ea10";
+}
+.icon-td-facebook:before {
+  content: "\ea91";
+}
+.icon-td-instagram:before {
+  content: "\ea92";
+}
+.icon-td-whatsapp:before {
+  content: "\ea93";
+}
+.icon-td-telegram:before {
+  content: "\ea95";
+}
+.icon-td-paypal:before {
+  content: "\ead8";
+}
+.icon-td-pdf:before {
+  content: "\eadf";
+}
+
+
+@mixin makeIcon($arg, $val) {
+
+.td-#{$arg}:before ,
+
+.ion-ios-td-#{$arg}:before ,
+
+.ion-ios-td-#{$arg}-outline:before ,
+
+.ion-md-td-#{$arg}:before ,
+
+.ion-md-td-#{$arg}-outline:before {
+
+content: $val;
+
+font-size: 20px;
+
+}
+
+}
+
+@include makeIcon(cog, '\e994' );
+@include makeIcon(store, '\e902');
+@include makeIcon(tags, '\e936');
+@include makeIcon(search, '\e986');
+@include makeIcon(quill, '\e907');
+@include makeIcon(user, '\e971');
+@include makeIcon(dm, '\ea95');

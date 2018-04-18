@@ -1,0 +1,91 @@
+<ion-header>
+
+  <ion-navbar color="white">
+    <ion-title>
+      <b>Register</b>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-slides>
+    <ion-slide #personalinfo>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <ion-item class="uppercased">
+          <ion-label floating>What's your email?</ion-label>
+          <ion-input formControlName="email" type="email" maxlength="100" required></ion-input>
+        </ion-item>
+
+        <ion-item class="uppercased">
+          <ion-label floating>What's your name?</ion-label>
+          <ion-input formControlName="fullname" type="text" maxlength="100" required></ion-input>
+        </ion-item>
+
+        <ion-item class="uppercased">
+          <ion-label floating>Mobile number?</ion-label>
+          <ion-input formControlName="mobile" type="number" maxlength="10" required></ion-input>
+        </ion-item>
+
+        <ion-item class="uppercased">
+          <ion-label floating>Current Location</ion-label>
+          <ion-input formControlName="location" type="text" maxlength="100" required></ion-input>
+        </ion-item>
+
+        <ion-item class="uppercased">
+          <ion-label floating>Select a username</ion-label>
+          <ion-input formControlName="username" type="text" maxlength="100" required></ion-input>
+        </ion-item>
+
+        <ion-item class="uppercased">
+          <ion-label floating>About you</ion-label>
+          <ion-input formControlName="about" type="text" maxlength="500" required></ion-input>
+        </ion-item>
+
+        <ion-item no-lines>
+          <button ion-button block color="hot" large type="submit" [disabled]="!registerForm.valid">
+            Continue
+          </button>
+        </ion-item>
+      </form>
+    </ion-slide>
+
+    <ion-slide #relationshipinfo>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <ion-item>
+          <ion-label>Do you drink?</ion-label>
+          <ion-checkbox color="dark" formControlName="lifestyle_drinks" checked="false"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Do you smoke</ion-label>
+          <ion-checkbox color="dark" formControlName="lifestyle_smokes" checked="false"></ion-checkbox>
+        </ion-item>
+
+        <ion-item class="uppercased">
+          <ion-label floating>Relationship Status</ion-label>
+          <ion-select formControlName="relationships_status" name ="status_relationship" required>
+            <ion-option value="Single" [selected]="true">Single</ion-option>
+            <ion-option value="Taken" [selected]="true">In a Relationship</ion-option>
+            <ion-option value="Divorced" [selected]="true">Divorced</ion-option>
+            <ion-option value="Married" [selected]="true">Married</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="uppercased">
+          <ion-label floating>Looking for</ion-label>
+          <ion-select formControlName="interests_sex" name ="interests_sex" required>
+              <ion-option value="Men" [selected]="true">Men</ion-option>
+              <ion-option value="Women" [selected]="true">Women</ion-option>
+              <ion-option value="Both" [selected]="true">Both</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item no-lines>
+          <button ion-button block color="hot" large type="submit" [disabled]="!registerForm.valid"> Continue </button>
+        </ion-item>
+      </form>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
